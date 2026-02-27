@@ -1,0 +1,14 @@
+[[redirects]]
+  from = "/"
+  to = "/index.html"
+  status = 302
+  force = true
+
+[build]
+  publish = "html"
+  command = ""
+
+[build.environment]
+  # Netlify will serve html/index.html as site root
+  NODE_VERSION = "18"
+
