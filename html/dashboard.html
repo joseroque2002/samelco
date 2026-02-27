@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard SAMELCO II</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;1,500&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+  <div class="bg-image" aria-hidden="true"></div>
+  <div class="noise"></div>
+  <div class="orb orb-1"></div>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <span class="nav-logo-icon" aria-hidden="true">
+          <img src="../assets/images/logo.png" alt="SAMELCO II logo" class="nav-logo-img">
+        </span>
+        <span class="nav-logo-text">
+          <span class="nav-logo-title">SAMELCO II</span>
+          <span class="nav-logo-sub">SAMAR ELECTRIC COOPERATIVE, INC.</span>
+        </span>
+      </a>
+      <div class="nav-right">
+        <div class="branch-nav-wrap" style="position:relative;">
+          <button type="button" class="branch-nav-btn" id="branches-btn">Branches</button>
+          <div id="branch-dropdown" class="branch-dropdown">
+            <button class="branch-option" data-branch="Paranas Main Office">Paranas Main Office</button>
+            <button class="branch-option" data-branch="Catbalogan Branch Office">Catbalogan Branch Office</button>
+            <button class="branch-option" data-branch="Villareal Branch">Villareal Branch</button>
+            <button class="branch-option" data-branch="Basey Branch Office">Basey Branch Office</button>
+          </div>
+        </div>
+        <a href="report.html" class="nav-btn nav-btn-report">Report Issue</a>
+        <span class="nav-user-welcome">Welcome, <span id="user-name">User</span></span>
+        <div class="nav-dots-wrap">
+          <button type="button" class="nav-dots-trigger" aria-label="Menu" aria-expanded="false" aria-haspopup="true" id="nav-dots-btn">
+            <span class="nav-dots-icon">&#9776;</span>
+          </button>
+          <div class="nav-dots-dropdown" id="nav-dots-dropdown">
+            <button type="button" class="nav-dots-item" data-action="home">Home</button>
+            <button type="button" class="nav-dots-item" data-action="records">Records</button>
+            <button type="button" class="nav-dots-item" data-action="analytics">Analytics</button>
+            <button type="button" class="nav-dots-item" data-action="etc">About</button>
+            <button type="button" class="nav-dots-item" data-action="contact">Contact</button>
+            <button type="button" class="nav-dots-item" id="logout-btn" data-action="logout">Logout</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <section class="map-section" id="map-section">
+    <div class="map-container">
+      <div class="map-header">
+        <h2 class="map-title">Service Coverage Area</h2>
+        <p class="map-subtitle">Explore SAMELCO II Municipalities across Samar</p>
+      </div>
+      <div class="map-content-wrapper">
+        <div class="map-wrapper">
+          <div id="map" class="map-canvas"></div>
+        </div>
+        <div class="municipalities-panel">
+          <h3 class="municipalities-panel-title">MUNICIPALITIES</h3>
+          <p class="municipalities-panel-subtitle">All municipalities and cities in Samar. Click to view barangays.</p>
+          <div class="municipalities-controls">
+            <label class="issues-toggle"><input type="checkbox" id="issues-only-toggle"> Show issues only</label>
+            <span class="issues-summary" id="issues-summary"></span>
+          </div>
+          <div id="municipalities-sidebar-list" class="municipalities-list"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <audio id="alarm-audio" src="../assest/audio/alarm.mp3" preload="auto"></audio>
+  <div id="alarm-permission" style="position:fixed; right:16px; bottom:16px; z-index:9999; display:none; background:#1a1512; color:#ffd000; padding:10px 12px; border-radius:10px; border:1px solid rgba(255,208,0,0.35); box-shadow:0 8px 24px rgba(0,0,0,0.2);">
+    <span style="margin-right:8px;">🔔 Enable sound alerts</span>
+    <button id="enable-alerts-btn" style="background:#ffd000; color:#1a1512; border:none; border-radius:6px; padding:6px 10px; cursor:pointer;">Enable</button>
+  </div>
+
+  <script src="../js/supabase-config.js"></script>
+  <script src="../js/dashboard.js"></script>
+</body>
+</html>
